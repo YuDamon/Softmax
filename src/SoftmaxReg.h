@@ -28,8 +28,8 @@ protected:
 	void CalcProb(float *x);
 
 private:
-	int numClass;  // num of categories
-    int dim;  // dimension of features, bias not included
+	int numClass;    // num of categories
+    int dim;        // dimension of features, bias not included
     float **theta; // weight
 };
 

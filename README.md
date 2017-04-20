@@ -1,1 +1,2 @@
 # Softmax
+TODO list
