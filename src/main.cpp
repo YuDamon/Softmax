@@ -3,7 +3,7 @@
 
  # include "SoftmaxReg.h"
 
-using namespace std;
+ using namespace std;
 
  int main() {
  	const string fileTrain = "irisTrain.txt";
