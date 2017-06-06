@@ -97,10 +97,10 @@ void SoftmaxReg::Train(const string &filenameTrain, int epoch, float alpha, bool
 		dataTrain[i] = new float[dim + 1];
 		labelTrain[i] = new float[numClass];
 	}
-	cout << "------------ Training INFO -------------"<<endl;
+	cout << "Training INFO -------------"<<endl;
 	//load data
 	if (loadData(filenameTrain, numTrain, dataTrain, labelTrain, true) == 0) {
-		cerr << "Error: Training failed" << endl;
+		cerr << "INFO    [Error]: Training failed" << endl;
 		return;
 	}
 
@@ -130,7 +130,7 @@ void SoftmaxReg::Train(const string &filenameTrain, int epoch, float alpha, bool
 	delete[] dataTrain;
 	delete[] labelTrain;
 	//  
-	cout << "Training done..." << endl;
+	cout << "INFO    Training done..." << endl;
 
 	
 	if (saveModel == 1) {
@@ -158,9 +158,9 @@ void SoftmaxReg::Train(const string &filenameTrain, int epoch, float alpha, bool
 		modelFile << "Epoch = "<<epoch<<endl;
 		modelFile << "Learning Rate = "<<alpha<<endl;
 		modelFile.close();
-			cout << "Training parameter saved in " << "\""<<curTime <<"\"..."<<endl ;
+			cout << "INFO    Training parameter saved in " << "\""<<curTime <<"\"..."<<endl ;
 	}
-	cout << "------------ ------------ -------------"<<endl<<endl;
+	//cout << "------------ ------------ -------------"<<endl<<endl;
 }
 
 
@@ -189,9 +189,9 @@ void SoftmaxReg::Predict(const string &filenameTest, bool modelType, const strin
 		labelTest[i] = new float[numClass];
 	}
 	//load data
-	cout << "------------ Prediction INFO -------------"<<endl;
+	cout<<endl<< "Prediction INFO -------------"<<endl;
 	if (loadData(filenameTest, numTest, dataTest, labelTest, false) == 0) {
-		cout << "Error: Predict failed" << endl;
+		cout << "INFO    Error: Predict failed" << endl;
 		return;
 	}
 	
@@ -203,7 +203,7 @@ void SoftmaxReg::Predict(const string &filenameTest, bool modelType, const strin
 		fstream fin;
 		fin.open(filenameModel, ios::in);
 		if (fin.fail()) {
-			cerr << "Error: Open model file failed" <<endl;
+			cerr << "INFO    Error: Open model file failed" <<endl;
 			return;
 		}
 		
@@ -213,7 +213,7 @@ void SoftmaxReg::Predict(const string &filenameTest, bool modelType, const strin
 			}	
 		} 
 		fin.close();
-		cout << "Testing data loaded from "<<filenameModel<<"..." <<endl;
+		cout << "INFO    Testing data loaded from "<<filenameModel<<"..." <<endl;
 	}
 
 	for (int i = 0; i < numTest; i++) {
@@ -241,9 +241,9 @@ void SoftmaxReg::Predict(const string &filenameTest, bool modelType, const strin
 	delete[] dataTest;
 	delete[] labelTest;
 	
-	cout << "Number of testing samples = "<< numTest <<endl;
-	cout << "Number of samples correctly classified = " << count<<endl;
-	cout << "Classification accuracy = " << (float)count / numTest <<endl;
-	cout << "------------- ------------ -------------"<<endl<<endl;
+	cout << "INFO    Number of testing samples = "<< numTest <<endl;
+	cout << "INFO    Number of samples correctly classified = " << count<<endl;
+	cout << "INFO    Classification accuracy = " << (float)count / numTest <<endl;
+	//cout << "------------- ------------ -------------"<<endl<<endl;
 }
 	
